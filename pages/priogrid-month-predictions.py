@@ -5,7 +5,7 @@ import plotly.express as px
 from datetime import datetime
 import geopandas as gpd
 
-st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace")
+st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace", initial_sidebar_state="collapsed")
 
 logo_link = 'kompzkfe_logo.png'
 with st.sidebar:
