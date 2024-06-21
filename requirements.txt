@@ -6,3 +6,4 @@ datetime
 pyogrio
 pyarrow
 geopandas
+pathlib
