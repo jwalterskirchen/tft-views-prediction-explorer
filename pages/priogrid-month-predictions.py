@@ -265,8 +265,8 @@ with tab2:
         threshold_mean = 0.04
         threshold_lo = 0
         threshold_hi = 0.09
-
-    predictions_lo = read_pgm_predictions(f'data/pgm24_predictions/pgm24_lo_{ci}_{filterdate}.parquet')
+    path = f'data/pgm24_predictions/pgm24_lo_{ci}_{filterdate}.parquet'
+    predictions_lo = read_pgm_predictions(path)
     predictions_lo = predictions_lo[(predictions_lo['outcome'] >= threshold_lo)]
     predictions_mean = read_pgm_predictions(f'data/pgm24_predictions/pgm24_mean_{filterdate}.parquet')
     predictions_mean = predictions_mean[(predictions_mean['outcome'] >= threshold_mean)]
