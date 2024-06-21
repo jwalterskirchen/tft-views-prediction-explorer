@@ -60,7 +60,7 @@ def get_historical(_df, filter):
                         locations=_df.index,
                         color=color,
                         hover_name=None,
-                        color_continuous_scale='Viridis',
+                        color_continuous_scale=colorscale,
                         range_color=range,
                         projection="orthographic",
                         width=800,
@@ -81,14 +81,14 @@ def predictionfig_mean(_df):
                         locations=_df.index,
                         color='outcome',
                         #hover_name="isoname",
-                        color_continuous_scale='Viridis',
+                        color_continuous_scale=colorscale,
                         range_color=range_mean,
                         projection="orthographic",
                         width=800,
                         height=600,
                         #animation_frame='Date',
                         hover_data={'Date':False,
-                        'outcome': ':.2f'},
+                        'outcome': ':.5f'},
                         labels={
                             'outcome': 'Predicted Fatalities',
                             'Date': 'Year & Month'
@@ -105,14 +105,14 @@ def predictionfig_hi(_df):
                         locations=_df.index,
                         color='outcome',
                         #hover_name="isoname",
-                        color_continuous_scale='Viridis',
+                        color_continuous_scale=colorscale,
                         range_color=range_hi,
                         projection="orthographic",
                         width=800,
                         height=600,
                         #animation_frame='Date',
                         hover_data={'Date':False,
-                        'outcome': ':.2f'},
+                        'outcome': ':.5f'},
                         labels={
                             'outcome': 'Predicted Fatalities',
                             'Date': 'Year & Month'
@@ -129,14 +129,13 @@ def predictionfig_lo(_df):
                         locations=_df.index,
                         color='outcome',
                         #hover_name="isoname",
-                        color_continuous_scale='Viridis',
+                        color_continuous_scale=colorscale,
                         range_color=range_lo,
                         projection="orthographic",
                         width=800,
                         height=600,
                         #animation_frame='Date',
-                        hover_data={'Date':False,
-                        'outcome': ':.2f'},
+                        hover_data={'Date':False,'outcome': ':.5f'},
                         labels={
                             'outcome': 'Predicted Fatalities',
                             'Date': 'Year & Month'
@@ -147,6 +146,7 @@ def predictionfig_lo(_df):
     return fig
 
 geo_df = read_geodf('data/geo_df_pgm.parquet')
+colorscale = 'Reds'
 #countries = read_csv('countries.csv')
 #predictions = load_geodataset('data/predictions_2024pgm.parquet')
 #months = read_csv('data/month_ids.csv')
@@ -231,44 +231,44 @@ with tab2:
                   horizontal=True, index=3)
 
     if ci == 60:
-        range_mean = [0.02, 3]
-        range_lo = [0.005, 3]
-        range_hi = [0.03, 3]
-        threshold_mean = 0.02
-        threshold_lo = 0.01
-        threshold_hi = 0.02
-    elif ci == 70:
-        range_mean = [0.02, 3]
-        range_lo = [0.02, 3]
-        range_hi = [0.03, 3]
-        threshold_mean = 0.02
-        threshold_lo = 0.01
-        threshold_hi = 0.02
-    elif ci == 80:
-        range_mean = [0.02, 3]
-        range_lo = [0.02, 3]
-        range_hi = [0.03, 3]
-        threshold_mean = 0.02
-        threshold_lo = 0.02
-        threshold_hi = 0.02
-    elif ci == 90:
-        range_mean = [0.04, 3]
-        range_lo = [0.0000, 3]
-        range_hi = [0.09, 3]
+        range_mean = [0, 3]
+        range_lo = [0, 3]
+        range_hi = [0, 3]
         threshold_mean = 0.04
-        threshold_lo = 0.0000
+        threshold_lo = 0.01
+        threshold_hi = 0.04
+    elif ci == 70:
+        range_mean = [0, 3]
+        range_lo = [0, 3]
+        range_hi = [0, 3]
+        threshold_mean = 0.04
+        threshold_lo = 0.01
+        threshold_hi = 0.04
+    elif ci == 80:
+        range_mean = [0, 3]
+        range_lo = [0, 3]
+        range_hi = [0, 3]
+        threshold_mean = 0.04
+        threshold_lo = 0.02
+        threshold_hi = 0.04
+    elif ci == 90:
+        range_mean = [0, 3]
+        range_lo = [0, 3]
+        range_hi = [0, 3]
+        threshold_mean = 0.04
+        threshold_lo = 0
         threshold_hi = 0.09
     elif ci == 99:
-        range_mean = [0.04, 3]
-        range_lo = [0.0000, 3]
-        range_hi = [0.09, 3]
+        range_mean = [0, 3]
+        range_lo = [0, 3]
+        range_hi = [0, 3]
         threshold_mean = 0.04
-        threshold_lo = 0.0000
+        threshold_lo = 0
         threshold_hi = 0.09
 
     predictions_lo = read_pgm_predictions(f'data/pgm24_predictions/pgm24_lo_{ci}_{filterdate}.parquet')
     predictions_lo = predictions_lo[(predictions_lo['outcome'] >= threshold_lo)]
-    predictions_mean = read_pgm_predictions(f'data/pgm24_predictions/pgm24_mean_{ci}_{filterdate}.parquet')
+    predictions_mean = read_pgm_predictions(f'data/pgm24_predictions/pgm24_mean_{filterdate}.parquet')
     predictions_mean = predictions_mean[(predictions_mean['outcome'] >= threshold_mean)]
     predictions_hi = read_pgm_predictions(f'data/pgm24_predictions/pgm24_hi_{ci}_{filterdate}.parquet')
     predictions_hi = predictions_hi[(predictions_hi['outcome'] >= threshold_hi)]

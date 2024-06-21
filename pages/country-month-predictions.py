@@ -4,7 +4,7 @@ import numpy as np
 import plotly.express as px
 from datetime import datetime
 
-st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace", initial_sidebar_state="collapsed")
+st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace")
 
 logo_link = 'kompzkfe_logo.png'
 with st.sidebar:
@@ -52,9 +52,9 @@ def get_figures(df, filter):
                         locations="isoab",
                         color=color,
                         hover_name="isoname",
-                        color_continuous_scale='Viridis',
+                        color_continuous_scale=colorscale,
                         range_color=range,
-                        projection="natural earth",
+                        projection="orthographic",
                         width=800,
                         height=600,
                         animation_frame='Year',
@@ -74,9 +74,9 @@ def predictionfig_mean(df):
                         locations="isoab",
                         color='outcome',
                         hover_name="isoname",
-                        color_continuous_scale='Viridis',
+                        color_continuous_scale=colorscale,
                         range_color=[0,200],
-                        projection="natural earth",
+                        projection="orthographic",
                         width=800,
                         height=600,
                         animation_frame='Date',
@@ -99,9 +99,9 @@ def predictionfig_hi(df):
                         locations="isoab",
                         color='outcome',
                         hover_name="isoname",
-                        color_continuous_scale='Viridis',
+                        color_continuous_scale=colorscale,
                         range_color=[0,200],
-                        projection="natural earth",
+                        projection="orthographic",
                         width=800,
                         height=600,
                         animation_frame='Date',
@@ -124,9 +124,9 @@ def predictionfig_lo(df):
                         locations="isoab",
                         color='outcome',
                         hover_name="isoname",
-                        color_continuous_scale='Viridis',
+                        color_continuous_scale=colorscale,
                         range_color=[0,200],
-                        projection="natural earth",
+                        projection="orthographic",
                         width=800,
                         height=600,
                         animation_frame='Date',
@@ -142,6 +142,7 @@ def predictionfig_lo(df):
     fig.update_layout(margin=dict(t=0, b=0, l=0, r=0), height=400)
     return fig
 
+colorscale = 'Reds'
 geo_df = load_geodataset('data/results_df.parquet')
 predictions = load_geodataset('data/predictions_2024.parquet')
 countries = read_csv('data/countries.csv')
