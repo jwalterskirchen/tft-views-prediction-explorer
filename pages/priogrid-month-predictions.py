@@ -267,11 +267,11 @@ with tab2:
         threshold_lo = 0
         threshold_hi = 0.09
     
-    predictions_lo = read_pgm_predictions(f'data/pgm24_predictions/pgm24_lo_{ci}_{filterdate}.parquet')
+    predictions_lo = read_pgm_predictions(f'data/pgm24_lo_{ci}_{filterdate}.parquet')
     predictions_lo = predictions_lo[(predictions_lo['outcome'] >= threshold_lo)]
-    predictions_mean = read_pgm_predictions(f'data/pgm24_predictions/pgm24_mean_{filterdate}.parquet')
+    predictions_mean = read_pgm_predictions(f'data/pgm24_mean_{filterdate}.parquet')
     predictions_mean = predictions_mean[(predictions_mean['outcome'] >= threshold_mean)]
-    predictions_hi = read_pgm_predictions(f'data/pgm24_predictions/pgm24_hi_{ci}_{filterdate}.parquet')
+    predictions_hi = read_pgm_predictions(f'data/pgm24_hi_{ci}_{filterdate}.parquet')
     predictions_hi = predictions_hi[(predictions_hi['outcome'] >= threshold_hi)]
 
     col4, col5, col6 = st.columns(3, gap='small')
