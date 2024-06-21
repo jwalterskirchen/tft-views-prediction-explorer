@@ -278,6 +278,7 @@ with tab2:
 
     with col4:
         if predictions_lo['outcome'].max() == 0:
+            st.markdown('#### Lower Bound Prediction')
             st.write('Lower Bound Predictions are all 0 for this Prediction Interval!')
         else:
             st.markdown('#### Lower Bound Prediction')
