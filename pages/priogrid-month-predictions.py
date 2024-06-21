@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-from datetime import datetime
+from datetime import datetime, date
 import geopandas as gpd
 
-st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace", initial_sidebar_state="collapsed")
+st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace")
 
 logo_link = 'kompzkfe_logo.png'
 with st.sidebar:
@@ -35,7 +35,11 @@ tab1, tab2 = st.tabs(["Historical Forecast", "True Future Forecast"])
 
 @st.cache_data
 def load_geodataset(data):
-    return pd.read_parquet(data)
+    return pd.read_parquet(data, engine='pyarrow')
+
+@st.cache_data
+def read_pgm_predictions(data):
+    return gpd.read_parquet(data)
 
 @st.cache_data
 def read_csv(data):
@@ -143,26 +147,26 @@ def predictionfig_lo(_df):
     return fig
 
 geo_df = read_geodf('data/geo_df_pgm.parquet')
-predictions = load_geodataset('data/predictions_2024pgm.parquet')
 #countries = read_csv('countries.csv')
-months = read_csv('data/month_ids.csv')
+#predictions = load_geodataset('data/predictions_2024pgm.parquet')
+#months = read_csv('data/month_ids.csv')
 
-months = months.drop(columns=["Unnamed: 4", "Unnamed: 5", "Unnamed: 6"])
+#months = months.drop(columns=["Unnamed: 4", "Unnamed: 5", "Unnamed: 6"])
 
-missing_months = pd.DataFrame({
-    'Date': ['2025-01-01', '2025-02-01', '2025-03-01', '2025-04-01', '2025-05-01', '2025-06-01'],
-    'Month': [1, 2, 3, 4, 5, 6],
-    'Year': [2025, 2025, 2025, 2025, 2025, 2025],
-    'month_id': [541, 542, 543, 544, 545, 546]
-})
+#missing_months = pd.DataFrame({
+#    'Date': ['2025-01-01', '2025-02-01', '2025-03-01', '2025-04-01', '2025-05-01', '2025-06-01'],
+#    'Month': [1, 2, 3, 4, 5, 6],
+#    'Year': [2025, 2025, 2025, 2025, 2025, 2025],
+#   'month_id': [541, 542, 543, 544, 545, 546]
+#})
 
 
-months['Date'] = months['Date'].apply(lambda x: datetime.strptime(x, '%b-%y'))
+#months['Date'] = months['Date'].apply(lambda x: datetime.strptime(x, '%b-%y'))
 
-months = pd.concat([months, missing_months], ignore_index=True)
-months['Date'] = pd.to_datetime(months['Date']).dt.date
+#months = pd.concat([months, missing_months], ignore_index=True)
+#months['Date'] = pd.to_datetime(months['Date']).dt.date
 
-predictions = predictions.merge(months, how='left', on='month_id')
+#predictions = predictions.merge(months, how='left', on='month_id')
 
 priogrid = gpd.read_file(
         "shapefiles/priogrid.shp", engine="pyogrio"
@@ -262,36 +266,17 @@ with tab2:
         threshold_lo = 0.0000
         threshold_hi = 0.09
 
-    predictions = predictions[(predictions['Date'] == datetime.strptime(filterdate, '%Y-%m-%d').date())]
-
-    predictions_mean = predictions.groupby(['priogrid_gid','Date'])['outcome'].mean()
-    predictions_mean = predictions_mean.reset_index()
-
-    predictions_mean = priogrid.merge(predictions_mean, how='left', left_on='priogrid_i', right_on='priogrid_gid')
-    predictions_mean = predictions_mean[(predictions_mean['outcome'] >= threshold_mean)]
-
-
-    predictions_hi = predictions.groupby(['priogrid_gid','Date'])[['outcome']].agg(lambda g: np.percentile(g, ci))
-    predictions_hi = predictions_hi.reset_index()
-
-    predictions_hi = priogrid.merge(predictions_hi, how='left', left_on='priogrid_i', right_on='priogrid_gid')
-    predictions_hi = predictions_hi[(predictions_hi['outcome'] >= threshold_hi)]
-    #st.write(predictions_hi['outcome'].describe())
-
-    predictions_lo = predictions.groupby(['priogrid_gid','Date'])[['outcome']].agg(lambda g: np.percentile(g, (100-ci)))
-    predictions_lo = predictions_lo.reset_index()
-    #st.write(predictions_lo['outcome'].describe())
-
-    predictions_lo = priogrid.merge(predictions_lo, left_on='priogrid_i', right_on='priogrid_gid')
+    predictions_lo = read_pgm_predictions(f'data/pgm24_predictions/pgm24_lo_{ci}_{filterdate}.parquet')
     predictions_lo = predictions_lo[(predictions_lo['outcome'] >= threshold_lo)]
-    #st.write(predictions_lo.groupby(['Date'])[['outcome']].max())
-
-    pred_lo_filter = predictions_lo[predictions_lo['Date'] == datetime.strptime(filterdate, '%Y-%m-%d').date()]
+    predictions_mean = read_pgm_predictions(f'data/pgm24_predictions/pgm24_mean_{ci}_{filterdate}.parquet')
+    predictions_mean = predictions_mean[(predictions_mean['outcome'] >= threshold_mean)]
+    predictions_hi = read_pgm_predictions(f'data/pgm24_predictions/pgm24_hi_{ci}_{filterdate}.parquet')
+    predictions_hi = predictions_hi[(predictions_hi['outcome'] >= threshold_hi)]
 
     col4, col5, col6 = st.columns(3, gap='small')
 
     with col4:
-        if pred_lo_filter['outcome'].max() == 0:
+        if predictions_lo['outcome'].max() == 0:
             st.write('Lower Bound Predictions are all 0 for this Prediction Interval!')
         else:
             st.markdown('#### Lower Bound Prediction')
