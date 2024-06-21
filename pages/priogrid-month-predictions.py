@@ -232,37 +232,37 @@ with tab2:
                   horizontal=True, index=3)
 
     if ci == 60:
-        range_mean = [0, 3]
-        range_lo = [0, 3]
-        range_hi = [0, 3]
+        range_mean = [0, 5]
+        range_lo = [0, 5]
+        range_hi = [0, 5]
         threshold_mean = 0.04
         threshold_lo = 0.01
         threshold_hi = 0.04
     elif ci == 70:
-        range_mean = [0, 3]
-        range_lo = [0, 3]
-        range_hi = [0, 3]
+        range_mean = [0, 5]
+        range_lo = [0, 5]
+        range_hi = [0, 5]
         threshold_mean = 0.04
         threshold_lo = 0.01
         threshold_hi = 0.04
     elif ci == 80:
-        range_mean = [0, 3]
-        range_lo = [0, 3]
-        range_hi = [0, 3]
+        range_mean = [0, 5]
+        range_lo = [0, 5]
+        range_hi = [0, 5]
         threshold_mean = 0.04
         threshold_lo = 0.02
         threshold_hi = 0.04
     elif ci == 90:
-        range_mean = [0, 3]
-        range_lo = [0, 3]
-        range_hi = [0, 3]
+        range_mean = [0, 5]
+        range_lo = [0, 5]
+        range_hi = [0, 5]
         threshold_mean = 0.04
         threshold_lo = 0
         threshold_hi = 0.09
     elif ci == 99:
-        range_mean = [0, 3]
-        range_lo = [0, 3]
-        range_hi = [0, 3]
+        range_mean = [0, 5]
+        range_lo = [0, 5]
+        range_hi = [0, 5]
         threshold_mean = 0.04
         threshold_lo = 0
         threshold_hi = 0.09
@@ -284,13 +284,16 @@ with tab2:
             st.markdown('#### Lower Bound Prediction')
             fig = predictionfig_lo(predictions_lo)
             st.plotly_chart(fig, use_container_width=False)
+            st.write(f'Not showing predictions lower than {threshold_lo}')
 
     with col5:
         st.markdown('#### Mean Prediction')
         fig = predictionfig_mean(predictions_mean)
-        st.plotly_chart(fig, use_container_width=False)
+        st.plotly_chart(fig, use_container_width=False)      
+        st.write(f'Not showing predictions lower than {threshold_mean}')
 
     with col6:
         st.markdown('#### Upper Bound Prediction')
         fig = predictionfig_hi(predictions_hi)
         st.plotly_chart(fig, use_container_width=False)
+        st.write(f'Not showing predictions lower than {threshold_hi}')
