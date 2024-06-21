@@ -4,7 +4,7 @@ import numpy as np
 import plotly.express as px
 from datetime import datetime, date
 import geopandas as gpd
-from pathlib import Path
+#from pathlib import Path
 
 st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace")
 
@@ -40,7 +40,7 @@ def load_geodataset(data):
 
 @st.cache_data
 def read_pgm_predictions(data):
-    return gpd.read_parquet(Path(__file__).parents[1] / data)
+    return gpd.read_parquet(data)
 
 @st.cache_data
 def read_csv(data):
