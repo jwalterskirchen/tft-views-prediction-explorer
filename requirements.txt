@@ -4,3 +4,5 @@ plotly
 numpy
 datetime
 pyogrio
+pyarrow
+geopandas
