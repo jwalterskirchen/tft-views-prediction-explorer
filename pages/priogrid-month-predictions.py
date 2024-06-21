@@ -4,6 +4,7 @@ import numpy as np
 import plotly.express as px
 from datetime import datetime, date
 import geopandas as gpd
+from pathlib import Path
 
 st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace")
 
@@ -39,7 +40,7 @@ def load_geodataset(data):
 
 @st.cache_data
 def read_pgm_predictions(data):
-    return gpd.read_parquet(data)
+    return gpd.read_parquet(Path(__file__).parents[1] / data)
 
 @st.cache_data
 def read_csv(data):
@@ -265,8 +266,8 @@ with tab2:
         threshold_mean = 0.04
         threshold_lo = 0
         threshold_hi = 0.09
-    path = f'data/pgm24_predictions/pgm24_lo_{ci}_{filterdate}.parquet'
-    predictions_lo = read_pgm_predictions(path)
+    
+    predictions_lo = read_pgm_predictions(f'data/pgm24_predictions/pgm24_lo_{ci}_{filterdate}.parquet')
     predictions_lo = predictions_lo[(predictions_lo['outcome'] >= threshold_lo)]
     predictions_mean = read_pgm_predictions(f'data/pgm24_predictions/pgm24_mean_{filterdate}.parquet')
     predictions_mean = predictions_mean[(predictions_mean['outcome'] >= threshold_mean)]
