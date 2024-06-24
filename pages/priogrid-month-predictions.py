@@ -233,7 +233,7 @@ with tab1:
 
 
 with tab2:
-      with st.expander("Prediction Intervals:"):
+    with st.expander("Prediction Intervals:"):
         st.write('''
             We train a TFT model for each test window (2018-2023) and level of analysis (CM and PGM). We use a Huberized Multi-Quantile loss (HuberMQL) (Huber 1964) that is used frequently in regression tasks with outliers or heavy tails for training our models.
             We use the same loss function to conduct our Optuna-based \cite{akiba2019OptunaNextgenerationHyperparameter} hyperparameter tuning. 
