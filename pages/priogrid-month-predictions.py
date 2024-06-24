@@ -6,7 +6,7 @@ from datetime import datetime, date
 import geopandas as gpd
 #from pathlib import Path
 
-st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace")
+st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace", initial_sidebar_state="collapsed")
 
 logo_link = 'kompzkfe_logo.png'
 with st.sidebar:
