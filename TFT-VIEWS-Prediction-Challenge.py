@@ -36,7 +36,7 @@ with st.expander("VIEWS Prediction Challenge 2023/24"):
         The models and results presented here document our contribution to the VIEWS Prediction Challenge 2023/2024. Financial support for the Prediction Challenge was provided by the German Ministry for Foreign Affairs.
         For more information on the Prediction Challenge please see Hegre et al. (Forthcoming) and https://viewsforecasting.org/research/prediction-challenge-2023 .
     ''')
-    st.image(['views_logo.png','ffo_logo.jpg'], width=300)
+    st.image('header.png', width=600)
     
 with st.expander("Temporal Fusion Transformer background"):
     st.write('''
@@ -59,4 +59,12 @@ with col2:
     st.subheader('CRPS overview - PRIOGrid-Month')
     st.image('CRPS_overview_pgm.jpg')
 
-
+with st.expander("Bibliography"):
+    st.markdown(
+        """
+        The following list won't indent no matter what I try:
+        - Item 1
+        - Item 2
+        - Item 3
+        """
+        )
