@@ -6,7 +6,7 @@ from datetime import datetime, date
 import geopandas as gpd
 #from pathlib import Path
 
-st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace", initial_sidebar_state="collapsed")
+st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="earth_africa", initial_sidebar_state="collapsed")
 
 logo_link = 'kompzkfe_logo.png'
 with st.sidebar:
@@ -174,6 +174,25 @@ priogrid = gpd.read_file(
     )
 
 with tab1:
+    with st.expander("Evaluation Metrics:"):
+        st.write('''
+            We evaluate model performance with three metrics: the Continuous Rank Probability Score (CRPS), the log or ignorance score (IGN), and Mean Interval Scores (MIS).
+            CRPS measures accuracy and can be thought of as the mean absolute error equivalent for predictive distributions. Values get closer to 0 if the prediction distribution has low variance and is centered around actual values. 
+            IGN is the log of the predictive density evaluated at the actual observation and complements CRPS. 
+            It is less concerned with the uncertainty around a prediction or the distance between prediction and observation, but with the probability attributed to the actual event. 
+            Lastly, MIS strikes a balance between having fairly narrow prediction intervals and good coverage rate.
+            It focuses on the most likely values, penalizes increasing prediction interval size and rewards coverage.
+            ''')
+    with st.expander("VIEWS Benchmark Models:"):
+        st.write('''
+            We evaluate model performance with three metrics: the Continuous Rank Probability Score (CRPS), the log or ignorance score (IGN), and Mean Interval Scores (MIS).
+            CRPS measures accuracy and can be thought of as the mean absolute error equivalent for predictive distributions. Values get closer to 0 if the prediction distribution has low variance and is centered around actual values. 
+            IGN is the log of the predictive density evaluated at the actual observation and complements CRPS. 
+            It is less concerned with the uncertainty around a prediction or the distance between prediction and observation, but with the probability attributed to the actual event. 
+            Lastly, MIS strikes a balance between having fairly narrow prediction intervals and good coverage rate.
+            It focuses on the most likely values, penalizes increasing prediction interval size and rewards coverage.
+            ''')
+        
     filteryear = st.radio('Select Year', range(2018,2024), index=0, horizontal=True)
     metric = st.radio('Select evaluation metric', ('CRPS', 'IGN', 'MIS'), captions=('Continuous Rank Probability Score', 'Ignorance Score', 'Mean Interval Score'),
                   horizontal=True)
