@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 
-st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="dove_of_peace")
+st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="earth_americas")
 
 logo_link = 'kompzkfe_logo.png'
 with st.sidebar:
@@ -36,7 +36,7 @@ with st.expander("VIEWS Prediction Challenge 2023/24"):
         The models and results presented here document our contribution to the VIEWS Prediction Challenge 2023/2024. Financial support for the Prediction Challenge was provided by the German Ministry for Foreign Affairs.
         For more information on the Prediction Challenge please see Hegre et al. (Forthcoming) and https://viewsforecasting.org/research/prediction-challenge-2023 .
     ''')
-    st.image(['views_logo.png','ffo_logo.jpg'], width=200)
+    st.image(['views_logo.png','ffo_logo.jpg'], width=300)
     
 with st.expander("Temporal Fusion Transformer background"):
     st.write('''
