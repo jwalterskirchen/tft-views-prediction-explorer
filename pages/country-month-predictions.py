@@ -17,18 +17,6 @@ st.title('Taking time seriously: Predicting conflict fatalities using temporal f
 
 st.markdown(" **Authors**: <a href='https://jwalterskirchen.github.io/' style='text-decoration: none; color: black; font-weight: bold;'>Julian Walterskirchen</a> and <a href='https://www.unibw.de/ciss-en/kompz-kfe' style='text-decoration: none; color: black; font-weight: bold;'>Sonja Häffner</a> and <a href='https://www.unibw.de/ciss/kompzkfe/personen/christian-oswald-m-a-1' style='text-decoration: none; color: black; font-weight: bold;'>Christian Oswald</a> and <a href='https://www.uni-bremen.de/en/institut-fuer-interkulturelle-und-internationale-studien/personen/wissenschaftliche-mitarbeiterinnen/marco-nicola-binetti' style='text-decoration: none; color: black; font-weight: bold;'>Marco N. Binetti</a>", unsafe_allow_html=True)
 
-st.markdown(f'''
-**Abstract:**
-Previous conflict forecasting efforts identified three areas for improvement: the importance of spatiotemporal dependencies and nonlinearities and the need 
-to exploit the latent information contained in conflict variables further, a lack of interpretability in return for high accuracy of complex algorithms, and 
-the need to quantify uncertainty around point forecasts. We predict fatalities with temporal fusion transformer models which have several desirable features 
-for conflict forecasting and tackle all these points. First, they can produce multi-horizon forecasts and probabilistic predictions through quantile regression. 
-This offers a flexible and non-parametric approach to estimate prediction uncertainty. Second, they can incorporate time-invariant covariates, known future inputs,
- and other exogenous time series which allows to identify globally important variables, persistent temporal patterns, and significant events for our prediction 
- problem. This mechanism makes them suitable to model both long-term and short-term dependencies. Third, this approach puts a strong focus on interpretability 
- such that we can investigate temporal dynamics more thoroughly via temporal self-attention decoders. Our models outperform an award-winning early warning
-  system on several metrics and test windows and are thus a valuable addition to the forecaster's toolkit.
-''')
 
 tab1, tab2 = st.tabs(["Historical Forecast", "True Future Forecast"])
 
@@ -232,7 +220,15 @@ with tab1:
 
 
 with tab2:
-
+    with st.expander("Prediction Intervals:"):
+        st.write('''
+            We train a TFT model for each test window (2018-2023) and level of analysis (CM and PGM). We use a Huberized Multi-Quantile loss (HuberMQL) (Huber 1964) that is used frequently in regression tasks with outliers or heavy tails for training our models.
+            We use the same loss function to conduct our Optuna-based \cite{akiba2019OptunaNextgenerationHyperparameter} hyperparameter tuning. 
+            Specifically, we optimize ten model parameters: the hidden layer size, number of attention heads, learning rate, scaler type, maximum number of steps, batch size, windows batch size, random seed, input size, and step size. 
+            We obtain predictions for differing levels of uncertainty (prediction interval of 50, 60, 70, 80, and 90 percent). We use these intervals to sample 1000 draws from a normal distribution for each of the levels and investigate
+            which level of uncertainty produces the most performant forecasts. We find that wider confidence bands (e.g., 90\% intervals) produce better performance scores at the country-month level (with 80\% CI producing the best results) 
+            and tighter confidence bands (e.g. 50\% intervals) for the priogrid-month level.
+            ''')
     ci = st.radio('Select Prediction Interval', (60, 70, 80, 90, 99), captions=('[40,60]', '[30,70]', '[20,80]', '[10,90]', '[1,99]'),
                   horizontal=True, index=3)
 
