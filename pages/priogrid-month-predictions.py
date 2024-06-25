@@ -174,11 +174,11 @@ with tab1:
             ''')
     with st.expander("VIEWS Benchmark Models:"):
         st.write('''
-            We compare our model performance to several benchmark models provided by VIEWS: Those include two naive and two historical conflict-based models. The naive benchmarks are samples drawn from
+            We compare our model performance to several benchmark models provided by VIEWS: Those include two naive and three historical conflict-based models. The naive benchmarks are samples drawn from
             a Poisson distribution centred around the last observed values for each unit of analysis (Poisson) or predictions with only zero values (Zero). The historical conflict benchmarks all treat historic 
             fatality counts as draws from the predictive distribution to generate forecasts. The first benchmark (“Conflictology”) uses fatality counts from a specific grid cell during the previous 12 months, 
             for the respective prediction window (12 draws). The second benchmark (“Conflictology N”) follows the same principle but uses the combined conflict history of the grid cell and its immediate neighbours
-            (108 draws). The third benchmark (“bootstrap 240”) draws 1000 random samples from the grid cell’s conflict history of the last 240 months.
+            (108 draws). The third benchmark (“Bootstrap”) draws 1000 random samples from the grid cell’s conflict history of the last 240 months.
             ''')
         
     filteryear = st.radio('Select Year', range(2018,2024), index=0, horizontal=True)
