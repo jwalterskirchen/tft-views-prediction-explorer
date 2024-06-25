@@ -224,7 +224,7 @@ with tab2:
     with st.expander("Prediction Intervals:"):
         st.write('''
             We train a TFT model for each test window (2018-2023) and level of analysis (CM and PGM). We use a Huberized Multi-Quantile loss (HuberMQL) (Huber 1964) that is used frequently in regression tasks with outliers or heavy tails for training our models.
-            We use the same loss function to conduct our Optuna-based \cite{akiba2019OptunaNextgenerationHyperparameter} hyperparameter tuning. 
+            We use the same loss function to conduct our Optuna-based  (Akiba, Sano, Yanase, Ohta & Koyama 2019) hyperparameter tuning. 
             Specifically, we optimize ten model parameters: the hidden layer size, number of attention heads, learning rate, scaler type, maximum number of steps, batch size, windows batch size, random seed, input size, and step size. 
             We obtain predictions for differing levels of uncertainty (prediction interval of 50, 60, 70, 80, and 90 percent). We use these intervals to sample 1000 draws from a normal distribution for each of the levels and investigate
             which level of uncertainty produces the most performant forecasts. We find that wider confidence bands (e.g., 90\% intervals) produce better performance scores at the country-month level (with 80\% CI producing the best results) 
