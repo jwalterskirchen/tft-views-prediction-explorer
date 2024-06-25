@@ -27,6 +27,8 @@ st.markdown('''
     Further details about the models, benchmarks, and evaluation metrics can be found in our preprint article at XYZ.com.
     ''')
 
+st.image('kompzkfe_logo.png', width=600)
+
 with st.expander("Abstract"):
     st.markdown(f'''
         **Abstract:**
@@ -46,7 +48,7 @@ with st.expander("VIEWS Prediction Challenge 2023/24"):
         The models and results presented here document our contribution to the VIEWS Prediction Challenge 2023/2024. Financial support for the Prediction Challenge was provided by the German Ministry for Foreign Affairs.
         For more information on the Prediction Challenge please see Hegre et al. (Forthcoming) and https://viewsforecasting.org/research/prediction-challenge-2023 .
     ''')
-    st.image('header.png', width=600)
+    st.image('header_short.png', width=600)
     
 with st.expander("Temporal Fusion Transformer background"):
     st.write('''
