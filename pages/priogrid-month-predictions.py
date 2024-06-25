@@ -174,12 +174,11 @@ with tab1:
             ''')
     with st.expander("VIEWS Benchmark Models:"):
         st.write('''
-            We evaluate model performance with three metrics: the Continuous Rank Probability Score (CRPS), the log or ignorance score (IGN), and Mean Interval Scores (MIS).
-            CRPS measures accuracy and can be thought of as the mean absolute error equivalent for predictive distributions. Values get closer to 0 if the prediction distribution has low variance and is centered around actual values. 
-            IGN is the log of the predictive density evaluated at the actual observation and complements CRPS. 
-            It is less concerned with the uncertainty around a prediction or the distance between prediction and observation, but with the probability attributed to the actual event. 
-            Lastly, MIS strikes a balance between having fairly narrow prediction intervals and good coverage rate.
-            It focuses on the most likely values, penalizes increasing prediction interval size and rewards coverage.
+            We compare our model performance to several benchmark models provided by VIEWS: Those include two naive and two historical conflict-based models. The naive benchmarks are samples drawn from
+            a Poisson distribution centred around the last observed values for each unit of analysis (Poisson) or predictions with only zero values (Zero). The historical conflict benchmarks all treat historic 
+            fatality counts as draws from the predictive distribution to generate forecasts. The first benchmark (“Conflictology”) uses fatality counts from a specific grid cell during the previous 12 months, 
+            for the respective prediction window (12 draws). The second benchmark (“Conflictology N”) follows the same principle but uses the combined conflict history of the grid cell and its immediate neighbours
+            (108 draws). The third benchmark (“bootstrap 240”) draws 1000 random samples from the grid cell’s conflict history of the last 240 months.
             ''')
         
     filteryear = st.radio('Select Year', range(2018,2024), index=0, horizontal=True)
