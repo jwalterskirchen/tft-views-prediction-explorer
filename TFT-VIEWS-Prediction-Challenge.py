@@ -13,6 +13,7 @@ with st.sidebar:
     #st.page_link("pages/country-month-predictions.py", label="Country Month Predictions")
     #st.page_link("pages/priogrid-month-predictions.py", label="PRIO-Grid Month Predictions")
 
+st.image('kompzkfe_logo.png', width=200)
 
 st.title('Taking time seriously: Predicting conflict fatalities using temporal fusion transformers')
 
@@ -26,8 +27,6 @@ st.markdown('''
     achieved by several VIEWS benchmark models. For the true future forecasts, users can investigate our probabilistic predictions by adjusting the prediction interval level to obtain lower- and upper-bound predictions.
     Further details about the models, benchmarks, and evaluation metrics can be found in our preprint article at XYZ.com.
     ''')
-
-st.image('kompzkfe_logo.png', width=600)
 
 with st.expander("Abstract"):
     st.markdown(f'''
