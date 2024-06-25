@@ -72,9 +72,36 @@ with col2:
 with st.expander("Bibliography"):
     st.markdown(
         """
-        The following list won't indent no matter what I try:
-        - Item 1
-        - Item 2
-        - Item 3
+        - Akiba, Takuya, Shotaro Sano, Toshihiko Yanase, Takeru Ohta & Masanori Koyama. 2019.
+            Optuna: A Next-generation Hyperparameter Optimization Framework. In Proceedings
+            of the 25th ACM SIGKDD International Conference on Knowledge Discovery & Data
+            Mining. KDD ’19 New York, NY, USA: Association for Computing Machinery pp. 2623–
+            2631.
+        - Elsayed, Shereen, Daniela Thyssens, Ahmed Rashed, Hadi Samer Jomaa & Lars Schmidt-
+            Thieme. 2021. “Do We Really Need Deep Learning Models for Time Series Forecasting?”.
+        - Gleditsch, Kristian Skrede. 2022. “One without the Other? Prediction and Policy in International
+            Studies.” International Studies Quarterly 66(3):sqac036.
+        - Hegre, H˚avard & others. Forthcoming. “The 2023/24 VIEWS Prediction Competition.”
+            Journal of Peace Research XXX.
+        - Hegre, H˚avard, Paola Vesco & Michael Colaresi. 2022. “Lessons from an Escalation Prediction
+            Competition.” International Interactions 48(4):521–554.
+        - Huber, Peter J. 1964. “Robust Estimation of a Location Parameter.” The Annals of Mathematical
+            Statistics 35(1):73–101.
+        - Lim, Bryan, Sercan ¨ O. Arık, Nicolas Loeff & Tomas Pfister. 2021. “Temporal Fusion Transformers
+            for Interpretable Multi-Horizon Time Series Forecasting.” International Journal
+            of Forecasting 37(4):1748–1764.
+        - Makridakis, Spyros, Evangelos Spiliotis, Vassilios Assimakopoulos, Artemios-Anargyros Semenoglou,
+            Gary Mulder & Konstantinos Nikolopoulos. 2023. “Statistical, Machine
+            Learning and Deep Learning Forecasting Methods: Comparisons and Ways Forward.”
+            Journal of the Operational Research Society 74(3):840–859.
+        - Olivares, Kin G., Cristian Chall´u, Federico Garza, Max Mergenthaler Canseco & Artur
+            Dubrawski. 2022. “NeuralForecast: User Friendly State-of-the-Art Neural Forecasting
+            Models.” PyCon Salt Lake City, Utah, US 2022.
+        - Salinas, David, Valentin Flunkert, Jan Gasthaus & Tim Januschowski. 2020. “DeepAR:
+            Probabilistic Forecasting with Autoregressive Recurrent Networks.” International Journal
+            of Forecasting 36(3):1181–1191.
+        - Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez,
+            Lukasz Kaiser & Illia Polosukhin. 2017. Attention Is All You Need. In Advances in
+            Neural Information Processing Systems. Vol. 30 Curran Associates, Inc.
         """
         )
