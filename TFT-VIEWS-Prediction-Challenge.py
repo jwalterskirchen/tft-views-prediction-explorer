@@ -75,19 +75,18 @@ with st.expander("Bibliography"):
         - Akiba, Takuya, Shotaro Sano, Toshihiko Yanase, Takeru Ohta & Masanori Koyama. 2019.
             Optuna: A Next-generation Hyperparameter Optimization Framework. In Proceedings
             of the 25th ACM SIGKDD International Conference on Knowledge Discovery & Data
-            Mining. KDD ’19 New York, NY, USA: Association for Computing Machinery pp. 2623–
-            2631.
+            Mining. KDD ’19 New York, NY, USA: Association for Computing Machinery pp. 2623–2631.
         - Elsayed, Shereen, Daniela Thyssens, Ahmed Rashed, Hadi Samer Jomaa & Lars Schmidt-
             Thieme. 2021. “Do We Really Need Deep Learning Models for Time Series Forecasting?”.
         - Gleditsch, Kristian Skrede. 2022. “One without the Other? Prediction and Policy in International
-            Studies.” International Studies Quarterly 66(3):sqac036.
-        - Hegre, H˚avard & others. Forthcoming. “The 2023/24 VIEWS Prediction Competition.”
+            Studies.” International Studies Quarterly 66(3)
+        - Hegre, Havard & others. Forthcoming. “The 2023/24 VIEWS Prediction Competition.”
             Journal of Peace Research XXX.
-        - Hegre, H˚avard, Paola Vesco & Michael Colaresi. 2022. “Lessons from an Escalation Prediction
+        - Hegre, Havard, Paola Vesco & Michael Colaresi. 2022. “Lessons from an Escalation Prediction
             Competition.” International Interactions 48(4):521–554.
         - Huber, Peter J. 1964. “Robust Estimation of a Location Parameter.” The Annals of Mathematical
             Statistics 35(1):73–101.
-        - Lim, Bryan, Sercan ¨ O. Arık, Nicolas Loeff & Tomas Pfister. 2021. “Temporal Fusion Transformers
+        - Lim, Bryan, Sercan O. Arık, Nicolas Loeff & Tomas Pfister. 2021. “Temporal Fusion Transformers
             for Interpretable Multi-Horizon Time Series Forecasting.” International Journal
             of Forecasting 37(4):1748–1764.
         - Makridakis, Spyros, Evangelos Spiliotis, Vassilios Assimakopoulos, Artemios-Anargyros Semenoglou,
