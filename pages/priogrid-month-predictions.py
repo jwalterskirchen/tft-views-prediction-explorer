@@ -189,14 +189,17 @@ with tab1:
         color = 'crps'
         range = [0.02,3]
         threshold = 0.02
+        geo_df = read_geodf('data/crps_results_pgm.parquet')
     elif metric == 'IGN':
         color = 'ign'
         range = [0.03,3]
         threshold = 0.83
+        geo_df = read_geodf('data/ign_results_pgm.parquet')
     elif metric == 'MIS':
         color = 'mis'
         range = [0.09,30]
         threshold = 0.09
+        geo_df = read_geodf('data/mis_results_pgm.parquet')
 
     col1, col2, col3 = st.columns(3, gap='small')
 
