@@ -35,16 +35,16 @@ def read_pgm_predictions(data):
 def read_csv(data):
     return pd.read_csv(data)
 
-@st.cache_data
+#@st.cache_data
 def read_geodf(data):
     return gpd.read_parquet(data)
     
-@st.cache_data
+#@st.cache_data
 def get_filtereddf(filter, metric, filteryear, color, threshold):
     df_filtered = geo_df[(geo_df['Model'] == filter) & (geo_df['Metric'] == metric) & (geo_df['Year'] == filteryear) & (geo_df[color] >= threshold)]
     return df_filtered
 
-@st.cache_data
+#@st.cache_data
 def get_historical(_df, filter):
     fig = px.choropleth(_df,
                         geojson=_df['geometry'],
