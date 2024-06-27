@@ -38,6 +38,7 @@ def read_csv(data):
 @st.cache_data
 def read_geodf(data):
     return gpd.read_parquet(data)
+    
 @st.cache_data
 def get_filtereddf(filter, metric, filteryear, color, threshold):
     df_filtered = geo_df[(geo_df['Model'] == filter) & (geo_df['Metric'] == metric) & (geo_df['Year'] == filteryear) & (geo_df[color] >= threshold)]
@@ -135,7 +136,7 @@ def predictionfig_lo(_df):
     fig.update_layout(margin=dict(t=0, b=0, l=0, r=0), height=400)
     return fig
 
-geo_df = read_geodf('data/geo_df_pgm.parquet')
+#geo_df = read_geodf('data/geo_df_pgm.parquet')
 colorscale = 'Reds'
 #countries = read_csv('countries.csv')
 #predictions = load_geodataset('data/predictions_2024pgm.parquet')
@@ -158,9 +159,9 @@ colorscale = 'Reds'
 
 #predictions = predictions.merge(months, how='left', on='month_id')
 
-priogrid = gpd.read_file(
-        "shapefiles/priogrid.shp", engine="pyogrio"
-    )
+#priogrid = gpd.read_file(
+#        "shapefiles/priogrid.shp", engine="pyogrio"
+#    )
 
 with tab1:
     with st.expander("Evaluation Metrics:"):
