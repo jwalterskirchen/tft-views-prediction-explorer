@@ -25,7 +25,7 @@ st.markdown('''
     that we submitted to the VIEWS Prediction Challenge (https://viewsforecasting.org/research/prediction-challenge-2023) in more detail. We provide
     evaluation metrics (CRPS, IGN, MIS) for all historical forecasts at both the country-month level and the PRIOGrid-level. Furthermore, model performance can be compared to the results
     achieved by several VIEWS benchmark models. For the true future forecasts, users can investigate our probabilistic predictions by adjusting the prediction interval level to obtain lower- and upper-bound predictions.
-    Further details about the models, benchmarks, and evaluation metrics can be found in our preprint article at XYZ.com.
+    Further details about the models, benchmarks, and evaluation metrics can be found in our preprint article at https://viewsforecasting.org/wp-content/uploads/tft_ccew_VIEWSPredictionChallenge2023.pdf.
     ''')
 
 with st.expander("Abstract"):
