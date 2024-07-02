@@ -177,7 +177,8 @@ with tab1:
         st.write('''
            For comparison, we rely on several VIEWS-provided benchmark models. These include on the country-month level (1) a model that bootstraps predictions from the last 20 years (Bootstrap), 
            (2) a model that predicts from a Poisson distribution centred around the last observed values for each unit of analysis (Poisson), 
-           (3) a model that predicts zero fatalities (Zero), and (4) a model that uses the previous 12 lags of the target variable for each unit of analysis as the basis of its predictive distribution (Conflictology).
+           (3) a model that predicts zero fatalities (Zero), (4) a model that uses the previous 12 lags of the target variable for each unit of analysis as the basis of its predictive distribution (Conflictology), and
+           (5) a model which extends the Conflictology model to also include observed values from neighbouring grid cells (Conflictology N).
             ''')
         
     filteryear = st.radio('Select Year', range(2018,2024), index=0, horizontal=True)
