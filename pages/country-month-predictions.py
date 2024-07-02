@@ -166,10 +166,9 @@ with tab1:
             ''')
     with st.expander("VIEWS Benchmark Models:"):
         st.write('''
-            We compare our model performance to several benchmark models provided by VIEWS: Those include two naive and two historical conflict-based models. The naive benchmarks are samples drawn from
-            a Poisson distribution centred around the last observed values for each unit of analysis (Poisson) or predictions with only zero values (Zero). The historical conflict benchmarks all treat historic 
-            fatality counts as draws from the predictive distribution to generate forecasts. The first benchmark (“Conflictology”) uses fatality counts from a specific country during the previous 12 months, 
-            for the respective prediction window (12 draws). The final benchmark (“Bootstrap”) draws 1000 random samples from the country's conflict history of the last 240 months.
+           For comparison, we rely on several VIEWS-provided benchmark models. These include on the country-month level (1) a model that bootstraps predictions from the last 20 years (Bootstrap), 
+           (2) a model that predicts from a Poisson distribution centred around the last observed values for each unit of analysis (Poisson), 
+           (3) a model that predicts zero fatalities (Zero), and (4) a model that uses the previous 12 lags of the target variable for each unit of analysis as the basis of its predictive distribution (Conflictology).
             ''')
 
     metric = st.radio('Select evaluation metric', ('CRPS', 'IGN', 'MIS'), captions=('Continuous Rank Probability Score', 'Ignorance Score', 'Mean Interval Score'),
