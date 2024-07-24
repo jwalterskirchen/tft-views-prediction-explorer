@@ -6,14 +6,14 @@ import plotly.express as px
 st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="earth_americas")
 
 logo_link = 'kompzkfe_logo.png'
-with st.sidebar:
-    st.logo(logo_link, link="https://www.unibw.de/ciss-en/kompz-kfe/")
+#with st.sidebar:
+#    st.logo(logo_link, link="https://www.unibw.de/ciss-en/kompz-kfe/")
     #st.markdown("[![KompZ KFE](app/static/kompzkfe_logo.png)](https://www.unibw.de/ciss-en/kompz-kfe/)", unsafe_allow_html=True)
     #st.title("Sections")
     #st.page_link("pages/country-month-predictions.py", label="Country Month Predictions")
     #st.page_link("pages/priogrid-month-predictions.py", label="PRIO-Grid Month Predictions")
 
-st.image('kompzkfe_logo.png', width=200)
+#st.image('kompzkfe_logo.png', width=200)
 
 st.title('Taking time seriously: Predicting conflict fatalities using temporal fusion transformers')
 
