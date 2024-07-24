@@ -7,8 +7,8 @@ from datetime import datetime
 st.set_page_config(layout="wide", page_title="TFT - Prediction Competition", page_icon="earth_asia", initial_sidebar_state="collapsed")
 
 logo_link = 'kompzkfe_logo.png'
-with st.sidebar:
-    st.logo(logo_link, link="https://www.unibw.de/ciss-en/kompz-kfe/")
+#with st.sidebar:
+#    st.logo(logo_link, link="https://www.unibw.de/ciss-en/kompz-kfe/")
 
 
 st.sidebar.header("Country-month Predictions")
